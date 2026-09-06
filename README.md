@@ -11,6 +11,8 @@
 - ❌ VSCode 编辑器大量头文件报红
 `#include "System.h"`、`#include "opencv2/opencv.hpp"` 提示找不到头文件
 
+![VSCode头文件爆红波浪线截图](./assets/vscode_red_error.png)
+
 ### 根本原因
 > **编译通过 ≠ VSCode IntelliSense 可以识别头文件**
 
@@ -20,9 +22,11 @@
 
 ## 🚀 完整修复流程
 
-### 1. CMake 开启编译数据库导出
+### CMake 开启编译数据库导出
 进入 ORB‑SLAM3 的 build 目录，执行 cmake，务必带上参数 `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON`
 ```bash
 cd build
 cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 make -j$(nproc)
+```
+![修复完成，头文件不再报红](./assets/one.png)
